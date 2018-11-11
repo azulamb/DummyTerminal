@@ -9,23 +9,31 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-precomposed.png?1">
-	<style type="text/css">html{height:100%;}body{padding:0;margin:0;}dummy-terminal{margin:auto;}</style>
+	<style type="text/css">html{height:100%;}body{padding:0;margin:0;}dummy-terminal{margin:auto;}input{margin:auto;display:block;box-sizing:border-box;width:36em;}</style>
 	<script type="text/javascript" src="./app.js"></script>
 	<script type="text/javascript">
 		document.addEventListener( 'DOMContentLoaded', () =>
 		{
 			const terminal = document.getElementById( 'terminal' );
-			setTimeout( () =>
+			/*setTimeout( () =>
 			{
 				terminal.write('test\ntest2\n').then( WaitFunc( 3000 ) ).then( () =>
 				{
 					terminal.write( 'testtesttest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' ).then( () => { terminal.write( '$ ', 0 ); } );
 				} );
-			}, 2000 );
+			}, 2000 );*/
+			document.getElementById( 'input' ).addEventListener( 'change', ( event ) =>
+			{
+				if ( !event.target.value ) { return; }
+				terminal.write( event.target.value + '\n' );
+				event.target.value = '';
+			} );
+
 		} );
 	</script>
 </head>
 <body>
 	<dummy-terminal id="terminal" size="0.5rem"></dummy-terminal>
+	<input type="text" id="input" autofocus>
 </body>
 </html>
