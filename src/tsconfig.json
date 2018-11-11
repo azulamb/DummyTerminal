@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"outFile": "../docs/app.js",
+		"module": "amd",
+		"target": "es2015",
+		"moduleResolution": "node",
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": false,
+		"sourceMap": false
+	},
+	"include": [
+		"./index.ts"
+	]
+}
