@@ -94,10 +94,10 @@ function InitDummyTerminal(tagname = 'dummy-terminal') {
                     ':host{font-size:' + size + ';color:' + front + ';}',
                     ':host > div{display:block;position:relative;overflow:hidden;width:calc(' + width + '*' + this.width + ');height:calc(' + height + '*' + this.height + ');background-color:' + back + ';}',
                     ':host > div > div{display:block;position:absolute;bottom:0;width:100%;min-height:100%;}',
-                    'div > span{display:block;float:left;overflow:hidden;text-align:center;width:' + width + ';height:' + height + ';line-height:' + height + ';}',
+                    'div > span{display:block;float:left;overflow:hidden;text-align:center;width:' + width + ';height:' + height + ';line-height:' + height + ';text-shadow: 0px 0px 5px ' + front + ';}',
                     'div > span.w{width:calc(' + width + '*2);}',
                     'div > span.n{clear:both;width:0;}',
-                    'div > span.cursor{background-color:' + front + ';opacity:1;}',
+                    'div > span.cursor{background-color:' + front + ';box-shadow: 0 0 5px ' + front + ';opacity:1;}',
                     'div > span.cursor:not(.move){animation:BLINK 0.5s cubic-bezier(1,.01,1,.61) infinite alternate;}',
                     '@keyframes BLINK{0%{opacity:1.0;}100% {opacity:0;}}',
                 ].join('');
