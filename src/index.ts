@@ -234,6 +234,20 @@ function InitDummyTerminal( tagname = 'dummy-terminal' )
 					size: this.getAttribute( 'size' ) || '',
 				};
 			}
+			if ( this.hasAttribute( 'front' ) )
+			{
+				option.terminal =
+				{
+					front: this.getAttribute( 'front' ) || '',
+					back: '',
+				};
+
+			}
+			if ( this.hasAttribute( 'back' ) )
+			{
+				if ( !option.terminal ) { option.terminal = { front: '', back: '' }; }
+				option.terminal.back = this.getAttribute( 'back' ) || '';
+			}
 
 			let cols = 80;
 			let rows = 24;

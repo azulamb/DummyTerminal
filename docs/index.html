@@ -15,18 +15,14 @@
 		document.addEventListener( 'DOMContentLoaded', () =>
 		{
 			const terminal = document.getElementById( 'terminal' );
-			/*setTimeout( () =>
+			const keys = [];
+			document.getElementById( 'input' ).addEventListener( 'keypress', ( event ) =>
 			{
-				terminal.write('test\ntest2\n').then( WaitFunc( 3000 ) ).then( () =>
+				if ( event.keyCode === 13 )
 				{
-					terminal.write( 'testtesttest\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' ).then( () => { terminal.write( '$ ', 0 ); } );
-				} );
-			}, 2000 );*/
-			document.getElementById( 'input' ).addEventListener( 'change', ( event ) =>
-			{
-				if ( !event.target.value ) { return; }
-				terminal.write( event.target.value + '\n' );
-				event.target.value = '';
+					terminal.write( event.target.value + '\n' );
+					event.target.value = '';
+				}
 			} );
 
 		} );
