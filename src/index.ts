@@ -129,6 +129,7 @@ function InitDummyTerminal( tagname = 'dummy-terminal' )
 			{
 				this.timer.reject();
 				this.timer = <any>null;
+				this.chars = [];
 			}
 		}
 	}

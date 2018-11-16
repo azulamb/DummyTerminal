@@ -78,6 +78,7 @@ function InitDummyTerminal(tagname = 'dummy-terminal') {
             if (this.timer) {
                 this.timer.reject();
                 this.timer = null;
+                this.chars = [];
             }
         }
     }

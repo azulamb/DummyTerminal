@@ -18,11 +18,13 @@
 			const keys = [];
 			document.getElementById( 'input' ).addEventListener( 'keypress', ( event ) =>
 			{
-				if ( event.keyCode === 13 )
+				if ( event.keyCode !== 13 ) { return; }
+				terminal.write( event.target.value + '\n' );
+				if ( event.target.value && event.target.value.match( /\s*clear\s*/ ) )
 				{
-					terminal.write( event.target.value + '\n' );
-					event.target.value = '';
+					setTimeout( () => { terminal.clear(); }, (event.target.value.length + 1) * 100 );
 				}
+				event.target.value = '';
 			} );
 
 		} );
