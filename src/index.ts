@@ -7,7 +7,7 @@ interface DummyTerminalInterface
 
 interface DummyTerminalOption
 {
-	font?: { size: string },
+	font?: { size: string, family?: string },
 	char?: { width: string, height: string },
 	terminal?: { back: string, front: string, time?: number },
 	cursor?: {},
@@ -143,6 +143,7 @@ function InitDummyTerminal( tagname = 'dummy-terminal' )
 		protected init( option?: DummyTerminalOption )
 		{
 			const size = option && option.font && option.font.size ? option.font.size : '1em';
+			const family = option && option.font && option.font.family ? option.font.family : 'monospace';
 			const width = option && option.char && option.char.width ? option.char.width : '0.6em';
 			const height = option && option.char && option.char.height ? option.char.height : '1.2em';
 			const front = option && option.terminal && option.terminal.front ? option.terminal.front : '#4af755';
@@ -151,7 +152,7 @@ function InitDummyTerminal( tagname = 'dummy-terminal' )
 			const style = document.createElement( 'style' );
 			style.textContent  =
 			[
-				':host{font-size:'+size+';color:'+front+';}',
+				':host{font-family:'+family+';font-size:'+size+';color:'+front+';}',
 				':host > div{display:block;position:relative;overflow:hidden;width:calc('+width+'*'+this.width+');height:calc('+height+'*'+this.height+');background-color:'+back+';}',
 				':host > div > div{display:block;position:absolute;bottom:0;width:100%;min-height:100%;}',
 				'div > span{display:block;float:left;overflow:hidden;text-align:center;width:'+width+';height:'+height+';line-height:'+height+';text-shadow: 0px 0px 5px '+front+';}',
@@ -235,6 +236,11 @@ function InitDummyTerminal( tagname = 'dummy-terminal' )
 					size: this.getAttribute( 'size' ) || '',
 				};
 			}
+			if ( this.hasAttribute( 'family' ) )
+			{
+				if ( !option.font ) { option.font = { size: '' }; }
+				option.font.family = this.getAttribute( 'family' ) || '';
+			}
 			if ( this.hasAttribute( 'front' ) )
 			{
 				option.terminal =
@@ -242,7 +248,6 @@ function InitDummyTerminal( tagname = 'dummy-terminal' )
 					front: this.getAttribute( 'front' ) || '',
 					back: '',
 				};
-
 			}
 			if ( this.hasAttribute( 'back' ) )
 			{

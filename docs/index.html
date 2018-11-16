@@ -17,6 +17,7 @@
 			const terminal = document.getElementById( 'terminal' );
 			const keys = [];
 			const input = document.getElementById( 'input' );
+			terminal.write( 'Welcome to Dummy Terminal...' );
 			input.addEventListener( 'keypress', ( event ) =>
 			{
 				if ( event.keyCode !== 13 ) { return; }
