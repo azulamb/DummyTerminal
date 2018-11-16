@@ -9,14 +9,15 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="apple-touch-icon" sizes="152x152" href="./apple-touch-icon-precomposed.png">
-	<style type="text/css">html{height:100%;}body{padding:0;margin:0;}dummy-terminal{margin:auto;}input{margin:auto;display:block;box-sizing:border-box;width:36em;}</style>
+	<style type="text/css">html{height:100%;}body{padding:0;margin:0;}dummy-terminal{margin:auto;box-shadow: 0 0 9px grey;}input{margin:auto;display:block;box-sizing:border-box;width:36em;opacity:0;pointer-events:none;}</style>
 	<script type="text/javascript" src="./app.js"></script>
 	<script type="text/javascript">
 		document.addEventListener( 'DOMContentLoaded', () =>
 		{
 			const terminal = document.getElementById( 'terminal' );
 			const keys = [];
-			document.getElementById( 'input' ).addEventListener( 'keypress', ( event ) =>
+			const input = document.getElementById( 'input' );
+			input.addEventListener( 'keypress', ( event ) =>
 			{
 				if ( event.keyCode !== 13 ) { return; }
 				terminal.write( event.target.value + '\n' );
@@ -26,12 +27,12 @@
 				}
 				event.target.value = '';
 			} );
-
+			terminal.addEventListener( 'click', () => { input.focus(); } );
 		} );
 	</script>
 </head>
 <body>
-	<dummy-terminal id="terminal" size="0.5rem"></dummy-terminal>
 	<input type="text" id="input" autofocus>
+	<dummy-terminal id="terminal" size="0.5rem"></dummy-terminal>
 </body>
 </html>
